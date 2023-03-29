@@ -6,7 +6,6 @@ public class PlayerManager : MonoBehaviour
 {
     InputManager inputManager;
     PlayerLocomotion playerLocomotion;
-    PlayerRotation playerRotation;
     PlayerInteract playerInteract;
 
     //Player Components
@@ -18,7 +17,6 @@ public class PlayerManager : MonoBehaviour
     {
         inputManager = GetComponent<InputManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
-        playerRotation = GetComponent<PlayerRotation>();
         playerInteract = GetComponent<PlayerInteract>();
 
         rb = GetComponent<Rigidbody>();
@@ -37,6 +35,6 @@ public class PlayerManager : MonoBehaviour
     }
     private void LateUpdate()
     {
-        playerRotation.PlayerLook(inputManager.mouseInput, delta);
+        playerLocomotion.PlayerLook(inputManager.mouseInput, delta);
     }
 }

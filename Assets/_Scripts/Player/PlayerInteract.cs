@@ -16,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
     private void Start()
     {
         playerUI = GetComponent<PlayerUI>();
-        cam = GetComponent<PlayerRotation>().cam;
+        cam = GetComponent<PlayerLocomotion>().cam;
     }
 
     public void PlayerInteractMenthod(bool canInteract)
