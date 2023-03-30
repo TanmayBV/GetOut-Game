@@ -19,22 +19,21 @@ public class PlayerInteract : MonoBehaviour
         cam = GetComponent<PlayerLocomotion>().cam;
     }
 
-    public void PlayerInteractMenthod(bool canInteract)
+    public void Update()
     {
         playerUI.UpdateText(string.Empty);
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * rayDistance);
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, rayDistance, mask))
+        if (Physics.Raycast(ray, out hitInfo, rayDistance))
         {
-            if (hitInfo.collider.GetComponent<Interactable>() != null)
+            if (hitInfo.collider != null)
             {
-                Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
-                playerUI.UpdateText(interactable.PromptMessage);
-                if (canInteract)
-                {
-                    interactable.BaseInteract();
-                }
+                var interactable = hitInfo.collider.GetComponent<IInteractable>();
+                if(interactable == null) return;
+                playerUI.UpdateText("Press E");
+                if(!Input.GetKeyDown(KeyCode.E)) return;
+                interactable.Interact();
             }
         }
     }
