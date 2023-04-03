@@ -5,6 +5,9 @@ using UnityEngine;
 public class Candles : MonoBehaviour,IInteractable
 {
     bool Islight;
+    private void Awake() {
+        gameObject.layer = 6;
+    }
     public void Interact()
     {
         Burn();

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
+    Animator anim;
+    private void Awake() {
+        anim = GetComponent<Animator>();
+        gameObject.layer = 6;
+    }
     bool isOpen = false;
     public void Interact()
     {
@@ -13,6 +18,6 @@ public class Door : MonoBehaviour, IInteractable
     void DoorMovement()
     {
         isOpen = !isOpen;
-       
+       anim.SetTrigger("DoorTrigger");
     }
 }

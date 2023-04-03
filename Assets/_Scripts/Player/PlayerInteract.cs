@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     PlayerUI playerUI;
-
     private Camera cam;
 
     [SerializeField] 
